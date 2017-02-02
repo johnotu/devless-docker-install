@@ -22,10 +22,16 @@ if [ $(uname) == "Linux" ]; then
 		apt-cache policy docker-engine
 		echo "Installing Docker..."
 		apt-get install -y docker-engine
-		echo "Pulling DevLess container..."
-		docker pull eddymens/devless
-		echo "Running DevLess container on port 8080..."
-		docker run -p 8080:80 eddymens/devless
+		if [[ "$(docker images -q eddymens/devless 2> /dev/null)" == "" ]]; then
+			echo "Found a DevLess container"
+			echo "Running DevLess container on port 8080 ..."
+			docker run -p 8080:80 eddymens/devless
+		else
+			echo "Pulling DevLess container ..."
+			docker pull eddymens/devless
+			echo "Running DevLess container on port 8080 ..."
+			docker run -p 8080:80 eddymens/devless
+		fi
 	else
 		echo "Your Linux distro is not supported"
 		echo "Please chaeck https://docs.docker.com/engine/installation/ for more options"
