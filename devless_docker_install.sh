@@ -4,7 +4,14 @@ if [ $(uname) == "Linux" ]; then
 	DISTRO=$DISTRIB_ID
 	CODENAME=$DISTRIB_CODENAME
 	if [ $DISTRO == "Ubuntu" ]; then
-		echo "Prepping linux box for Docker install ..."
+		echo "______           _               "
+		echo "|  _  \         | |              "
+		echo "| | | |_____   _| | ___  ___ ___ "
+		echo "| | | / _ \ \ / / |/ _ \/ __/ __|"
+		echo "| |/ /  __/\ V /| |  __/\__ \__ \\"
+		echo "|___/ \___| \_/ |_|\___||___/___/"
+		                                 
+		echo "Prepping Linux box for Docker install ..."
 		apt-get update
 		apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 		apt-add-repository \
